@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lista de Convidados</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div id="app">
+			<h1>Lista de Convidados</h1>
+			<h3>Nome da Festa</h3>
+			<div id="conteudo">
+				<ul id="lista"></ul>
+				<input id="nome" type="text" placeholder="Insira o nome do convidado">
+				<input id="cpf" type="text" placeholder="Informe o CPF">
+				<button id="botao">Cadastrar</button>
+			</div>			
+		</div>	
+
+		<script type="text/javascript">		
+			var convidados =JSON.parse(localStorage.getItem('convidados')) || []
+
+			var elLista = document.getElementById('lista')
+			var elNome = document.getElementById('nome')
+			var elCpf = document.getElementById('cpf')
+			var elBotao = document.getElementById('botao')
+
+			var addConvidado = () =>{
+				var nome = elNome.value
+				var cpf = elCpf.value
+
+				if(cpf === ''){
+					alert('Campo CPF Obrigatório.')
+				}else if(cpf.length < 11 || cpf.length > 11){
+					alert('Informe 11 dígitos no campo CPF.')
+				}
+				else{
+					convidados.push({nome: nome, cpf: cpf})
+					elNome.value = ''
+					elCpf.value = ''
+					salvarConvidados()
+					listarConvidados()
+				}					
+			}
+
+			function salvarConvidados(){
+				localStorage.setItem('convidados', JSON.stringify(convidados))
+			}
+			
+			elBotao.onclick = addConvidado
+
+			var listarConvidados = () => {
+				elLista.innerHTML = ''
+
+				for(const convidado of convidados){
+					var elConvidado = document.createElement('li')
+					var elNome = document.createTextNode(convidado.nome)
+					var elCpf = document.createTextNode(convidado.cpf)
+
+					var elExcluir = document.createElement('a')
+					elExcluir.setAttribute('href', '#')
+
+					elExcluir.onclick = function() {
+						convidados = convidados.filter(function(item){
+							return (item.nome !== convidado.nome) && (item.cpf !== convidado.cpf)
+						})
+						salvarConvidados()
+						listarConvidados()
+					}
+
+					var elExcluirTexto = document.createTextNode('Excluir')
+					var elEspaco = document.createTextNode(' CPF:')
+
+					elExcluir.appendChild(elExcluirTexto)
+					elConvidado.appendChild(elNome)
+					elConvidado.appendChild(elEspaco)
+					elConvidado.appendChild(elCpf)
+					elConvidado.appendChild(elExcluir)
+					elLista.appendChild(elConvidado)
+				}
+			}
+
+			listarConvidados()
+		</script>
+	</body>
+</html>

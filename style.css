@@ -1,0 +1,90 @@
+* {
+	padding: 0;
+	list-style: none;
+}
+
+#cpf {
+	width: 90px;
+}
+
+#app {
+	/*border-radius: 15px;*/
+	box-shadow: 5px 5px 15px;
+	background: #E3E7F1;
+	width: 560px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#conteudo {
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 7px;
+}
+
+#conteudo li {
+	margin-top: 7px;
+}
+
+#conteudo li a {
+	border: 1px solid #FF6584;
+	border-radius: 7px;
+	margin-left: 6px;
+	padding: 0px 5px 0px 5px;
+	text-decoration: none;
+	background: #FF6584;
+	color: white;
+}
+
+#conteudo li a:hover{
+	background: white;
+	color: #FF6584;
+	transition: 0.8s;
+}
+
+h1 {
+	margin-bottom: 0;
+	width: 400px;
+	padding-left: 20px;
+	background-image: linear-gradient(to right, black 60%, #E3E7F1);
+	font-size: 25px;
+	text-align: center;
+	color: white;
+}
+
+h3 {
+	margin-top: 0px;
+	margin-left: 30px;
+	padding-left: 20px;
+	width: 440px;
+	background-image: linear-gradient(to right, #FF6584 60%, #E3E7F1);
+	text-align: center;
+	color: white;
+}
+
+input {
+	padding: 2px;
+	margin-right: 2px;
+	border-radius: 7px;
+	border-style: none;
+	border:  2px solid #FF6584;
+	outline: 0;
+}
+button {
+	padding: 2px;
+	border-radius: 7px;
+	border-style: none;
+	border: 2px solid #FF6584;
+	background: #FF6584;
+	color:white;
+	width: 75px;
+	outline: 0;
+}
+
+button:hover{
+	background: white;
+	transition: 1s;
+	color: #FF6584;
+	cursor: pointer;
+}
